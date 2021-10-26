@@ -55,12 +55,13 @@ export const login = async () => {
 
 export const logout = async () => {
 
-  localStorage.setItem('authentication', JSON.stringify({ 
-    isLoggedIn : false,
-    name : null,
-    accountId : null,
-    data : null 
-  }))
+  localStorage
+    .setItem('authentication', JSON.stringify({ 
+      isLoggedIn : false,
+      name : null,
+      accountId : null,
+      data : null 
+    }))
 
   window.location.reload()
 
@@ -92,7 +93,11 @@ export const signUp = async (
     /**
      *  Get the ipfs auth token from the api
      */
-    const ipfsAuthToken = (await axios.get('/api/get-ipfs-token').then(res => res.data) as string)
+    const ipfsAuthToken = (
+      await axios
+        .get('/api/get-ipfs-token')
+        .then(res => res.data) as string
+    )
 
     // ------------------------------------------------------------
 
